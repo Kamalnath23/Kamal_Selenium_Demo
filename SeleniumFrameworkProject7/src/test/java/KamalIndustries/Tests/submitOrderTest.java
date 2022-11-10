@@ -36,7 +36,7 @@ public class submitOrderTest extends BaseTest {
 	public void submitOrder(HashMap<String, String> input) throws IOException {
 		
 		// landingPage LandingPage= launchApplication();   --> this method is used before 'BeforeMethod'
-
+		System.out.println("Submit order test automation started");
 		productCatalogue PC = LandingPage.loginApplication(input.get("email"), input.get("password"));
 
 		List<WebElement> products = PC.getProductList();
@@ -57,17 +57,20 @@ public class submitOrderTest extends BaseTest {
 		Boolean check = confirmedMsg.equalsIgnoreCase("THANKYOU FOR THE ORDER.");
 		System.out.println(check);
 		Assert.assertTrue(check);
-
+		System.out.println("Submit order test automation ended");
 	}
 	
 	@Test(dependsOnMethods= {"submitOrder"})
 	public void orderHistoryTest() {
+		System.out.println("Order History test automation started");
 		String productName= "zara coat 3";
 		productCatalogue PC = LandingPage.loginApplication("kamalnath121998@gmail.com", "Password1*");
 		orderPage OrderPage= PC.goToOrderPage();
 		OrderPage.VerifyOrderDisplay(productName);
 		
 		Assert.assertTrue(OrderPage.VerifyOrderDisplay(productName));
+		
+		System.out.println("Order History test automation ended");
 	}
 	
 	
