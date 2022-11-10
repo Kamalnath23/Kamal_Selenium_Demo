@@ -77,9 +77,11 @@ public class submitOrderTest extends BaseTest {
 	
 	@DataProvider
 	public Object[][] getData() throws IOException {
-		
+		System.out.println("data provider initiating.");
 		List<HashMap<String,String>> data = getJsonData(System.getProperty("user.dir")+"\\src\\test\\java\\KamalIndustries\\Data\\purchaseOrder.json");
+		System.out.println("Data fetched.");
 		return new Object[][] {{data.get(0)},{data.get(1)}};
+		
 	}
 	
 	/* @DataProvider
